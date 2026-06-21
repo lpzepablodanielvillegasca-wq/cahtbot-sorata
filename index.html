@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Asistente Turístico Sorata</title>
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+}
+
+#chat{
+position:fixed;
+bottom:20px;
+right:20px;
+width:330px;
+background:white;
+border-radius:15px;
+box-shadow:0 0 15px #777;
+overflow:hidden;
+}
+
+#header{
+background:#1b7f5c;
+color:white;
+padding:15px;
+font-weight:bold;
+}
+
+#messages{
+height:350px;
+padding:10px;
+overflow-y:auto;
+font-size:14px;
+}
+
+.user{
+background:#e1f5fe;
+padding:8px;
+margin:8px;
+border-radius:10px;
+text-align:right;
+}
+
+.bot{
+background:#eeeeee;
+padding:8px;
+margin:8px;
+border-radius:10px;
+}
+
+
+#input{
+display:flex;
+}
+
+input{
+width:80%;
+padding:10px;
+border:none;
+outline:none;
+}
+
+button{
+width:20%;
+background:#1b7f5c;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div id="chat">
+
+<div id="header">
+🌄 Asistente Turístico Sorata
+</div>
+
+
+<div id="messages">
+
+<div class="bot">
+Hola 👋 Soy el asistente turístico de Sorata.  
+Puedo ayudarte con tours, lugares turísticos, requisitos y reservas.
+</div>
+
+</div>
+
+
+<div id="input">
+
+<input id="text" placeholder="Escribe tu pregunta...">
+
+<button onclick="send()">
+➤
+</button>
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+
+function send(){
+
+let input=document.getElementById("text");
+let msg=input.value;
+
+if(msg=="") return;
+
+
+let box=document.getElementById("messages");
+
+
+box.innerHTML += 
+`<div class="user">${msg}</div>`;
+
+
+let answer=response(msg.toLowerCase());
+
+
+setTimeout(()=>{
+
+box.innerHTML +=
+`<div class="bot">${answer}</div>`;
+
+box.scrollTop=box.scrollHeight;
+
+},500);
+
+
+input.value="";
+
+}
+
+
+
+
+function response(msg){
+
+
+if(
+msg.includes("gruta") ||
+msg.includes("san pedro")
+){
+
+return "La Gruta de San Pedro es una caverna natural de Sorata con formaciones rocosas impresionantes. Puedes recorrerla, tomar fotografías y vivir una experiencia de aventura.";
+
+}
+
+
+
+if(
+msg.includes("laguna") ||
+msg.includes("chillata")
+){
+
+return "La Laguna Chillata ofrece paisajes andinos increíbles. Puedes realizar caminatas, disfrutar la naturaleza y tomar fotografías.";
+
+}
+
+
+
+if(
+msg.includes("illampu") ||
+msg.includes("circuito")
+){
+
+return "El Circuito Illampu permite disfrutar vistas del nevado Illampu, realizar trekking y conectar con la naturaleza.";
+
+}
+
+
+
+if(
+msg.includes("puente")
+){
+
+return "El Puente Colgante es un atractivo donde puedes vivir una experiencia diferente, cruzarlo y disfrutar los paisajes.";
+
+}
+
+
+
+if(
+msg.includes("requisito") ||
+msg.includes("llevar")
+){
+
+return "Para viajar a Sorata recomendamos llevar documento de identidad, ropa cómoda, abrigo, calzado para caminatas, bloqueador solar y agua.";
+
+}
+
+
+
+if(
+msg.includes("tour") ||
+msg.includes("reserva") ||
+msg.includes("precio")
+){
+
+return "Para reservar un tour contáctanos para confirmar disponibilidad, fechas y precios. Después podrás realizar tu pago y enviarnos el comprobante.";
+
+}
+
+
+
+if(
+msg.includes("auto") ||
+msg.includes("alquiler") ||
+msg.includes("renta")
+){
+
+return "Contamos con información sobre renta de autos en Sorata para que puedas recorrer sus atractivos con comodidad.";
+
+}
+
+
+
+if(
+msg.includes("llegar") ||
+msg.includes("transporte")
+){
+
+return "Podemos ayudarte con información para llegar a Sorata. Para detalles exactos puedes contactar a nuestro asesor.";
+
+}
+
+
+
+return "No tengo información específica sobre esa consulta 😅. Para ayudarte mejor puedes contactar con nuestro asesor turístico 📲 y te atenderemos personalmente.";
+
+
+}
+
+
+
+</script>
+
+
+</body>
+</html>
